@@ -1,0 +1,50 @@
+
+<ion-content padding class="login-background">
+  <br/>
+  <br/>
+<br/>
+<br/>
+<br/><br/>
+ 
+<br/>
+<br/>
+<br/>
+ 
+    <div padding-horizontal text-center >
+      <div class="logo"></div>
+     
+      <h2 ion-text class="text-primary">
+        <strong></strong> 
+      </h2>
+    </div>
+<br/>
+<br/>
+<br/>
+    
+    <form class="list-form">
+      <ion-item>
+        <ion-label color="dark">
+        <ion-icon name="person" color="dark"></ion-icon>
+          Username
+        </ion-label>
+        <ion-input tappable type="text" required [(ngModel)]="data.name" [ngModelOptions]="{standalone: true}" required>{{data.name}}</ion-input>
+      </ion-item>
+<br/>
+      <ion-item>
+        <ion-label color="dark">
+        <ion-icon name="lock"  color="dark"></ion-icon>
+          Password
+        </ion-label>
+        <ion-input tappable type="password" required [(ngModel)]="data.pw"  [ngModelOptions]="{standalone: true}" required>{{data.pw}}</ion-input>
+      </ion-item>
+     
+     
+    </form>
+    <br/>
+<br/>
+    <div>
+      <button ion-button block tappable (click)="loginUser()"  [disabled]="!data.name || !data.pw" round>
+        SIGN IN
+      </button>
+    </div>
+</ion-content>

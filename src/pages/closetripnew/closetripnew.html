@@ -1,0 +1,67 @@
+<!--
+  Generated template for the ClosetripnewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing..."></ion-refresher-content>
+      </ion-refresher>
+      <!-- <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar> -->
+<ion-grid>
+  <ion-row>
+      <ion-col col-md-2 >
+          <ion-datetime displayFormat="DD-MM-YYYY"   [(ngModel)]="fromValue"  [ngModelOptions]="{standalone: true}" style="background-color: white" placeholder="From Date"></ion-datetime>
+          <!-- <input type="text"  [(ngModel)]="fromValue" [ngModelOptions]="{standalone: true}" placeholder="from date"/> -->
+  <!-- <input type="text" name="S_Date" ng-model="startDate" (ionInput)="setFilteredItems()"/> -->
+ </ion-col>
+ <ion-col col-md-2>
+    <ion-datetime displayFormat="DD-MM-YYYY"   [(ngModel)]="toValue"  [ngModelOptions]="{standalone: true}" style="background-color: white" placeholder="To Date"></ion-datetime>
+ <!-- <input type="text" [(ngModel)]="toValue" [ngModelOptions]="{standalone: true}" placeholder="to date" /> -->
+ <!-- <button ion-button type="submit" full (click)="save()" style="background-color:#273746; margin-bottom: auto;">Submit</button> -->
+  <!-- <input type="text" name="E_Date" ng-model="endDate"/> -->
+ </ion-col >
+ <ion-col col-md-2>
+    <button ion-button type="submit" full (click)="fromto()" style="background-color:#273746; margin-bottom: auto;">Submit</button>
+ </ion-col>
+  </ion-row>
+      <ion-row>
+      <ion-col col-md-3 style="font-size:10pt;font-weight: bold; ">
+        Vehicle No.
+      </ion-col>
+      <ion-col col-md-3 style="font-size:10pt;font-weight: bold;">
+        Start Date
+      </ion-col>
+      <ion-col col-md-3 offset-md-3 style="font-size:10pt;font-weight: bold;">
+      Trip Details
+      </ion-col>
+      <ion-col col-md-3 style="font-size:10pt;font-weight: bold;">
+        Total Cases({{total}})
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row *ngFor='let data of dataList'>
+      <ion-col col-md-3 style="font-size:9pt;">
+        <!-- <a  (click)="goAnOtherPage($event, data)">{{data.vehicle_num}}</a> -->
+      {{data.vehicle_num}}
+      </ion-col>
+      <ion-col col-md-3 style="font-size:9pt;">
+        {{data.start_date}}
+      </ion-col>
+      <ion-col col-md-3 offset-md-3 style="font-size:9pt;">
+         <a (click)="goAnOtherPageModify($event, data)">Trip Details</a>
+      </ion-col>
+      <ion-col col-md-3 style="font-size:9pt;">
+        {{data.totalqtycases}}
+      </ion-col>
+    </ion-row>
+
+
+
+  </ion-grid>
+</ion-content>

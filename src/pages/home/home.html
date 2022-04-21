@@ -1,0 +1,450 @@
+<!--
+  Generated template for the UserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center><img  src="../../assets/imgs/SNOW-200-24_2.png" ></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="user-background">
+  <br/>
+
+  <ion-avatar>
+      <!-- <ion-icon name="car"></ion-icon> -->
+    <img  height="60" width="110" src="../../assets/imgs/Icon-512.png">
+  </ion-avatar>
+<ion-card round class="card">
+  <form>
+    
+    <ion-item>
+      <ion-label>Vehicle Number</ion-label>
+      <ionic-selectable
+        item-content 
+        [(ngModel)]="data.port"
+        [items]="ports"
+        itemValueField="id"
+        itemTextField="veh_reg"
+        [canSearch]="true"
+        (onChange)="portChange($event)"
+        [ngModelOptions]="{standalone: true}">
+      </ionic-selectable>
+    </ion-item>
+    <ion-item>
+        <ion-label>Start Date</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY HH:mm" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" required [(ngModel)]="data.startdate"  [ngModelOptions]="{standalone: true}"></ion-datetime>
+    </ion-item>
+
+
+        <ion-row> 
+            <ion-col col-6>
+            <ion-item>
+              <ion-label stacked>Min Temp.</ion-label>
+              <ionic-selectable 
+              style="height: 32px;  "
+              item-content
+              class='pt'
+              [(ngModel)]="data.min"
+              [items]="mins"
+              itemValueField="id"
+              itemTextField="id"
+              [canSearch]="true"
+              (onChange)="pointminChange($event)" 
+              [ngModelOptions]="{standalone: true}">
+            </ionic-selectable>
+            </ion-item>
+            </ion-col>
+            
+            
+          
+            <ion-col col-6>
+            <ion-item>
+              <ion-label stacked>Max Temp.</ion-label>
+              <ionic-selectable 
+              style="height: 32px; "
+              item-content
+              class='pt'
+              [(ngModel)]="data.max"
+              [items]="mins"
+              itemValueField="id"
+              itemTextField="id"
+              [canSearch]="true"
+              (onChange)="pointmaxChange($event)" 
+              [ngModelOptions]="{standalone: true}">
+            </ionic-selectable>
+              <!-- <ion-datetime style="height: 32px;" displayFormat="HH:mm" required [(ngModel)]="data.halt"  [ngModelOptions]="{standalone: true}"></ion-datetime> -->
+            </ion-item>
+          </ion-col>
+          </ion-row> 
+<!--       
+      <ion-row>
+          <ion-item *ngFor="let att of anArray; let idx = index">
+              <ion-label color="primary">{{att.label}}{{idx+1}}</ion-label>
+              <ion-input type="text"  text-right  [(ngModel)]="anArray[idx].value" [ngModelOptions]="{standalone: true}"></ion-input>
+          </ion-item>
+          <button ion-button   (click)="Add()">Add More</button>
+          <button ion-button full  (click)="goTo()" >let's go</button>
+         
+        
+      </ion-row> -->
+      
+      <!-- <ion-row *ngFor="let att of anArray; let idx = index"> 
+          <ion-col col-9>
+          <ion-item>
+            <ion-label stacked>Point</ion-label>
+            <ionic-selectable 
+            style="height: 32px;"
+            item-content
+            class='pt'
+            [(ngModel)]="data.pointone"
+            [items]="points"
+            itemValueField="from_location"
+            itemTextField="from_location"
+            [canSearch]="true"
+            (onChange)="pointoneChange($event)" 
+            [ngModelOptions]="{standalone: true}">
+          </ionic-selectable>
+          </ion-item>
+          </ion-col>
+          
+          
+       
+          <ion-col col-3>
+          <ion-item>
+            <ion-label stacked>H</ion-label>
+            <ion-datetime style="height: 32px;" displayFormat="HH:mm" required [(ngModel)]="data.halt"  [ngModelOptions]="{standalone: true}"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      
+        </ion-row> -->
+
+
+      <!-- <button ion-button   (click)="Add()">Add More</button>
+      <button ion-button full  (click)="goTo()" >let's go</button> -->
+      
+          <!-- <ion-col col-10>
+            <ion-item>
+              <ion-label>Enter  Name</ion-label>
+              <ion-input type="text" text-right [(ngModel)]="doc_name[0]" id="doc_name[0]" name="doc_name[0]" required></ion-input>
+            </ion-item>
+          </ion-col> -->
+        <ion-row>	
+          <ion-col col-9>
+            <ion-item>
+              <ion-label stacked>Source</ion-label> 
+              <ionic-selectable 
+              style="height: 32px;"
+              item-content
+              class='pt'
+              [(ngModel)]="ghi[0]"
+              [items]="points"
+              itemValueField="from_location"
+              itemTextField="from_location"
+              [canSearch]="true"
+           
+              [ngModelOptions]="{standalone: true}"
+              id="ghi[0]" 
+              name="ghi[0]">
+            </ionic-selectable>
+            </ion-item>
+            </ion-col>
+            <ion-col col-3>
+
+              <ion-item>
+                <ion-label stacked>Quantity</ion-label>
+                <ion-input tappable type="text"  [(ngModel)]="qty[0]"  id="qty[0]" 
+                name="qty[0]"  [ngModelOptions]="{standalone: true}" ></ion-input>
+                <!-- <ion-datetime style="height: 32px;" displayFormat="HH:mm"  [(ngModel)]="myDate[0]" id="myDate[0]" name="myDate[0]"  [ngModelOptions]="{standalone: true}"></ion-datetime> -->
+              </ion-item>
+            </ion-col>
+            
+         
+            <!-- <ion-col col-3>
+            <ion-item>
+              <ion-label stacked>Halt 1</ion-label>
+              <ion-datetime style="height: 32px;" displayFormat="HH:mm"  [(ngModel)]="myDate[0]" id="myDate[0]" name="myDate[0]"  [ngModelOptions]="{standalone: true}"></ion-datetime>
+            </ion-item>
+          </ion-col> -->
+          <!-- <ion-col col-2>
+            <button class="btn btnpos" (click)="selectNo1(1);" ion-button><ion-icon style="color: #fff" name="md-add"></ion-icon></button>
+          </ion-col> -->
+      </ion-row>
+      
+      <ion-row>	
+          <ion-col col-4>
+            <ion-item>
+              <ion-label stacked>Point 1</ion-label> 
+              <ionic-selectable 
+              style="height: 32px;"
+              item-content
+              class='pt'
+              [(ngModel)]="ghi[1]"
+              [items]="points"
+              itemValueField="from_location"
+              itemTextField="from_location"
+              [canSearch]="true"
+              [ngModelOptions]="{standalone: true}"
+              id="ghi[1]" 
+              name="ghi[1]">
+            </ionic-selectable>
+            </ion-item>
+            </ion-col>
+            
+            
+         
+            <ion-col col-3>
+            <ion-item>
+              <ion-label stacked>Halt 1</ion-label>
+              <ion-datetime style="height: 32px;" displayFormat="HH:mm" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" [(ngModel)]="myDate[0]" id="myDate[0]" name="myDate[0]"  [ngModelOptions]="{standalone: true}"></ion-datetime>
+            </ion-item>
+            </ion-col>
+          <!-- <ion-col col-2>
+            <button class="btn btnpos" (click)="selectNo1(1);" ion-button><ion-icon style="color: #fff" name="md-add"></ion-icon></button>
+          </ion-col> -->
+          <ion-col col-2>
+            <ion-item>
+              <ion-label stacked>Quantity</ion-label>
+              <ion-input tappable type="text"  [(ngModel)]="qty[1]"  id="qty[1]" 
+              name="qty[1]"  [ngModelOptions]="{standalone: true}" ></ion-input>
+            </ion-item>
+          </ion-col> 
+          <ion-col col-2>
+              <img src="http://gtrac.in/snowmanappmac/plus.png" style="width : 100% ; height : 100%;margin-left: 14px;" (click)="selectNo1(1);" >
+            <!-- <button class="btn btnpos" (click)="selectNo1(1);" ion-button></button> -->
+          </ion-col>
+      </ion-row>
+       
+          <ion-row *ngFor="let item of MySelect1; let i=index; " >     
+              <ion-col col-4>
+                  <ion-item>
+                    <ion-label stacked>Point {{item+1}}</ion-label>
+                    <ionic-selectable 
+                    style="height: 32px;"
+                    item-content
+                    class='pt'
+                    [(ngModel)]="ghi[item+1]"
+                    [items]="points"
+                    itemValueField="from_location"
+                    itemTextField="from_location"
+                    [canSearch]="true"
+                   
+                    [ngModelOptions]="{standalone: true}"
+                    id="ghi[{{item+1}}]"
+                    name="ghi[{{item+1}}]">
+                  </ionic-selectable>
+                  </ion-item>
+                  </ion-col>
+                  
+                  
+               
+                  <ion-col col-3>
+                  <ion-item>
+                    <ion-label stacked>Halt {{item+1}}</ion-label>
+                    <ion-datetime style="height: 32px;" displayFormat="HH:mm" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" [(ngModel)]="myDate[item]" id="myDate[{{item}}]" name="myDate[{{item}}]"  [ngModelOptions]="{standalone: true}"  ></ion-datetime>
+                  </ion-item>
+                </ion-col>   
+                <ion-col col-2>
+                  <ion-item>
+                    <ion-label stacked>Quantity</ion-label>
+                    <ion-input tappable type="text"  [(ngModel)]="qty[item+1]"  id="qty[{{item+1}}]" 
+                    name="qty[{{item+1}}]"  [ngModelOptions]="{standalone: true}" ></ion-input>
+                  </ion-item>
+                </ion-col>    
+            <!-- <ion-col col-10>
+              <ion-item>
+                <ion-label>Enter  Name</ion-label>
+                <ion-input type="text" text-right [(ngModel)]="doc_name[item]" id="doc_name[{{item}}]" name="doc_name[{{item}}]" required></ion-input>
+              </ion-item>
+            </ion-col>-->
+            <!-- <ion-col col-2>
+              <button class="btn btnpos" ion-button (click)="selectNo1(0);"><ion-icon style="color: #fff" name="md-remove"></ion-icon></button>
+            </ion-col>  -->
+            <ion-col col-2>
+            <img src="http://gtrac.in/snowmanappmac/minus.png" style="width : 100% ; height : 100%; margin-left: 14px;" (click)="selectNo1(0);" >
+          </ion-col>
+          </ion-row>
+
+
+          <ion-row>	
+              <ion-col col-9>
+                <ion-item>
+                  <ion-label stacked>Destination</ion-label> 
+                  <ionic-selectable 
+                  style="height: 32px;"
+                  item-content
+                  class='pt'
+                  [(ngModel)]="ghi[moreIndex1+1]"
+                  [items]="points"
+                  itemValueField="from_location"
+                  itemTextField="from_location"
+                  [canSearch]="true"
+               
+                  [ngModelOptions]="{standalone: true}"
+                  id="ghi[moreIndex1+1]" 
+                  name="ghi[moreIndex1+1]">
+                </ionic-selectable>
+                </ion-item>
+                </ion-col>
+                
+                <ion-col col-3>
+
+                  <ion-item>
+                    <ion-label stacked>Quantity</ion-label>
+                    <ion-input tappable type="text"  [(ngModel)]="qty[moreIndex1+1]"  id="qty[moreIndex1+1]" name="qty[moreIndex1+1]"  [ngModelOptions]="{standalone: true}" ></ion-input>
+                    <!-- <ion-datetime style="height: 32px;" displayFormat="HH:mm"  [(ngModel)]="myDate[0]" id="myDate[0]" name="myDate[0]"  [ngModelOptions]="{standalone: true}"></ion-datetime> -->
+                  </ion-item>
+                </ion-col>
+             
+                <ion-col col-1 [hidden]="true">
+                <ion-item>
+                  <ion-label stacked>Halt 1</ion-label>
+                  <ion-datetime style="height: 32px;" displayFormat="HH:mm"  [(ngModel)]="myDate[moreIndex1+1]"  [ngModelOptions]="{standalone: true}"></ion-datetime>
+                </ion-item>
+              </ion-col>
+              <!-- <ion-col col-2>
+                <button class="btn btnpos" (click)="selectNo1(1);" ion-button><ion-icon style="color: #fff" name="md-add"></ion-icon></button>
+              </ion-col> -->
+          </ion-row>
+<!--       
+          <ion-item>
+            <ion-label style="padding-left: 10px;">Enter Doc. Address</ion-label>
+            <ion-input type="text" text-right [(ngModel)]="doc_add[item]" name="doc_add[{{item}}]" required></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label style="padding-left: 10px;">Contact</ion-label>
+            <ion-input type="number" text-right [(ngModel)]="doc_cont[item]" name="doc_cont[{{item}}]" required></ion-input>
+          </ion-item> -->
+      
+        
+      
+      
+      
+    <!-- point 1--> 
+     <!-- <ion-row> 
+    <ion-col col-9>
+    <ion-item>
+      <ion-label stacked>Point 1</ion-label>
+      <ionic-selectable 
+      style="height: 32px;"
+      item-content
+      class='pt'
+      [(ngModel)]="data.pointone"
+      [items]="points"
+      itemValueField="from_location"
+      itemTextField="from_location"
+      [canSearch]="true"
+      (onChange)="pointoneChange($event)" 
+      [ngModelOptions]="{standalone: true}">
+    </ionic-selectable>
+    </ion-item>
+    </ion-col>
+    
+    
+ 
+    <ion-col col-3>
+    <ion-item>
+      <ion-label stacked>H</ion-label>
+      <ion-datetime style="height: 32px;" displayFormat="HH:mm" required [(ngModel)]="data.halt"  [ngModelOptions]="{standalone: true}"></ion-datetime>
+    </ion-item>
+  </ion-col>
+  </ion-row> -->
+  <!-- pt2 -->
+ <!-- <ion-row>
+      <ion-col col-9>
+    <ion-item>
+      <ion-label stacked>Point 2</ion-label>
+      <ionic-selectable 
+      style="height: 32px;"
+      item-content
+      class='pt'
+      [(ngModel)]="data.pointtwo"
+      [items]="points"
+      itemValueField="from_location"
+      itemTextField="from_location"
+      [canSearch]="true"
+      (onChange)="pointtwoChange($event)" 
+      [ngModelOptions]="{standalone: true}">  
+    </ionic-selectable>
+  </ion-item>
+    </ion-col>
+  
+    <ion-col col-3>
+        <ion-item>
+          <ion-label stacked>H</ion-label>
+          <ion-datetime style="height: 32px;" displayFormat="HH:mm" required [(ngModel)]="data.halttwo"  [ngModelOptions]="{standalone: true}"></ion-datetime>
+        </ion-item>
+      </ion-col>
+</ion-row>  -->
+<!-- pt3 -->
+<!-- <ion-row>
+    <ion-col col-9>
+    <ion-item>
+      <ion-label stacked>Point 3</ion-label>
+      <ionic-selectable 
+      style="height: 32px;"
+      item-content
+      class='pt'
+      [(ngModel)]="data.pointthree"
+      [items]="points"
+      itemValueField="from_location"
+      itemTextField="from_location"
+      [canSearch]="true"
+      (onChange)="pointthreeChange($event)" 
+      [ngModelOptions]="{standalone: true}">  
+    </ionic-selectable>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3>
+        <ion-item>
+          <ion-label stacked>H</ion-label>
+          <ion-datetime style="height: 32px;" displayFormat="HH:mm" required [(ngModel)]="data.haltthree"  [ngModelOptions]="{standalone: true}"></ion-datetime>
+        </ion-item>
+      </ion-col>
+  </ion-row>  -->
+<!-- pt4 -->
+    <!-- <ion-row>
+      <ion-col col-9>
+    <ion-item>
+      <ion-label stacked>Point 4</ion-label>
+      <ionic-selectable 
+      style="height: 32px;"
+      item-content
+      class='pt'
+      [(ngModel)]="data.pointfour"
+      [items]="points"
+      itemValueField="from_location"
+      itemTextField="from_location"
+      [canSearch]="true"
+      (onChange)="pointfourChange($event)" 
+      [ngModelOptions]="{standalone: true}">  
+    </ionic-selectable>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3>
+        <ion-item>
+          <ion-label stacked>H</ion-label>
+          <ion-datetime style="height: 32px;" displayFormat="HH:mm" required [(ngModel)]="data.haltfour"  [ngModelOptions]="{standalone: true}"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>  -->
+  
+
+    <br/>
+   
+    <br/>
+    <button ion-button type="submit" full (click)="save()" round style="background-color:#273746;     margin-bottom: auto;">Submit</button> 
+  </form>
+</ion-card>
+  </ion-content>
+
+
+
+ 
+

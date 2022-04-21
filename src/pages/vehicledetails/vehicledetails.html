@@ -1,0 +1,651 @@
+<!--
+  Generated template for the VehicledetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content padding>
+  <!-- <ion-refresher> -->
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+          <ion-refresher-content pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing..."></ion-refresher-content>
+        </ion-refresher>
+ <button ion-button round  type="submit" (click)="mapcall()" style="margin-left:0%; text-transform: none;">Map View</button>
+<ion-item class="item-md"> 
+   <ion-label color='dark'><b>Vehicle No.</b></ion-label>
+   <ion-input  [(ngModel)]="data.veh" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+  <!-- <ion-label>{{data.veh}}</ion-label> -->
+  </ion-item>
+  <ion-item class="item-md"> 
+      <ion-label color='dark'><b>Trip Start DateTime</b></ion-label>
+      <ion-input  [(ngModel)]="data.tripdatetime" [ngModelOptions]="{standalone: true}" style="font-size:72%" no-margin no-padding disabled></ion-input>
+     <!-- <ion-label>{{data.veh}}</ion-label> -->
+     </ion-item>
+    
+     <ion-item class="item-md"> 
+        <ion-label color='dark'><b>Last Update Time</b></ion-label>
+        <ion-input  [(ngModel)]="data.gpstime" [ngModelOptions]="{standalone: true}" style="font-size:72%" no-margin no-padding disabled></ion-input>
+       <!-- <ion-label>{{data.veh}}</ion-label> -->
+       </ion-item>
+
+       <ion-item class="item-md"> 
+          <ion-label color='dark'><b>Current Temperature</b></ion-label>
+          <ion-input [(ngModel)]="data.currenttemp" [ngModelOptions]="{standalone: true}" style="font-size:72%" no-margin no-padding disabled></ion-input>
+         <!-- <ion-label>{{data.veh}}</ion-label> -->
+         </ion-item>
+
+         
+
+         <ion-item class="item-md"> 
+            <ion-label color='dark'><b>Set Temperature</b></ion-label>
+            <ion-input  [(ngModel)]="data.setfromtemp" [ngModelOptions]="{standalone: true}" style="font-size:72%;" no-margin no-padding disabled></ion-input>
+           
+          
+          <ion-input [(ngModel)]="data.settotemp" [ngModelOptions]="{standalone: true}" style="font-size:72%;margin-right:60px;" no-margin no-padding disabled></ion-input>
+           </ion-item>
+       
+
+
+    <ion-item class="item-md">
+      <ion-label color='dark'><b>Current Location</b></ion-label>
+    <!-- <ion-input  [(ngModel)]="data.current" [ngModelOptions]="{standalone: true}" no-margin no-padding ></ion-input> -->
+    <ion-textarea  autosize [(ngModel)]="data.current" [ngModelOptions]="{standalone: true}" style="font-size:72%"  (click)="goMapPage($event, data)" disabled></ion-textarea>
+  </ion-item>
+  <!-- hello -->
+  <ion-item class="item-md"> 
+    <ion-label color='dark'><b>Total Quantity in Cases</b></ion-label>
+    <ion-input [(ngModel)]="data.total" [ngModelOptions]="{standalone: true}" style="font-size:72%" no-margin no-padding disabled></ion-input>
+   <!-- <ion-label>{{data.veh}}</ion-label> -->
+   </ion-item>
+    
+    
+    <ion-item class="item-mdother">
+      <ion-label color='dark'><b>Trip Details</b></ion-label>
+      <ion-label color='dark' style="margin-right: -189px;"><b>Quantity</b></ion-label>
+    </ion-item>
+  
+      <div *ngIf="temp==='2'">
+          <ion-item class="item-mdother">
+              <ion-label color='dark' style="font-size:78%;"><b>Source</b></ion-label>
+              <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt1" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled ></ion-input>
+              <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q1" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+            </ion-item>
+            <ion-item class="item-mdother">
+              <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+              <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt2" [ngModelOptions]="{standalone: true}" no-margin no-padding  disabled></ion-input>
+              <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q2" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+            </ion-item>
+      </div>
+      <div *ngIf="temp==='3'">
+
+          <ion-item class="item-mdother">
+              <ion-label color='dark' style="font-size:78%;"><b>Source</b></ion-label>
+              <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt1" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled ></ion-input>
+              <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q1" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+            </ion-item>
+            <ion-item class="item-mdother">
+              <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+              <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt2" [ngModelOptions]="{standalone: true}" no-margin no-padding  disabled></ion-input>
+              <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q2" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+            </ion-item>
+            <ion-item class="item-mdother">
+              <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+              <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt3" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+              <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+            </ion-item>
+
+
+        </div>
+        <div *ngIf="temp==='4'">
+         
+            <ion-item class="item-mdother">
+                <ion-label color='dark' style="font-size:78%;"><b>Source</b></ion-label>
+                <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt1" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled ></ion-input>
+                <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q1" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+              </ion-item>
+              <ion-item class="item-mdother">
+                <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+                <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt2" [ngModelOptions]="{standalone: true}" no-margin no-padding  disabled></ion-input>
+                <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q2" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+              </ion-item>
+              <ion-item class="item-mdother">
+                <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+                <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt3" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+              </ion-item>
+              <ion-item class="item-mdother">
+                <ion-label color='dark'  style="font-size:78%;"><b>Dest.</b></ion-label>
+                <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                <ion-input class="text-input text-input-md" style="font-size:66%" [(ngModel)]="data.q4" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+              </ion-item>
+              
+          </div>
+          <div *ngIf="temp==='5'">
+              <ion-item class="item-mdother">
+                  <ion-label color='dark' style="font-size:78%;"><b>Source</b></ion-label>
+                  <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt1" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled ></ion-input>
+                  <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q1" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                </ion-item>
+                <ion-item class="item-mdother">
+                  <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+                  <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt2" [ngModelOptions]="{standalone: true}" no-margin no-padding  disabled></ion-input>
+                  <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q2" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                </ion-item>
+                <ion-item class="item-mdother">
+                  <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+                  <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt3" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                  <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                </ion-item>
+                <ion-item class="item-mdother">
+                  <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+                  <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                  <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q4" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                </ion-item>
+                <ion-item class="item-mdother">
+                    <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+                    <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                    <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q5" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                  </ion-item>
+          </div>
+            <div *ngIf="temp==='6'">
+                <ion-item class="item-mdother">
+                    <ion-label color='dark' style="font-size:78%;"><b>Source</b></ion-label>
+                    <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt1" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled ></ion-input>
+                    <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q1" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                  </ion-item>
+                  <ion-item class="item-mdother">
+                    <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+                    <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt2" [ngModelOptions]="{standalone: true}" no-margin no-padding  disabled></ion-input>
+                    <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q2" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+    
+                  </ion-item>
+                  <ion-item class="item-mdother">
+                    <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+                    <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt3" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                    <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                  </ion-item>
+                  <ion-item class="item-mdother">
+                    <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+                    <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                    <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q4" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                  </ion-item>
+                  <ion-item class="item-mdother">
+                      <ion-label color='dark'  style="font-size:78%;"><b>Point 4</b></ion-label>
+                      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                      <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q5" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                    </ion-item>
+                    <ion-item class="item-mdother">
+                        <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+                        <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt6" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                        <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q6" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                      </ion-item>
+
+              </div>
+              <div *ngIf="temp==='7'">
+                  <ion-item class="item-mdother">
+                      <ion-label color='dark' style="font-size:78%;"><b>Source</b></ion-label>
+                      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt1" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled ></ion-input>
+                      <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q1" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                    </ion-item>
+                    <ion-item class="item-mdother">
+                      <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+                      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt2" [ngModelOptions]="{standalone: true}" no-margin no-padding  disabled></ion-input>
+                      <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q2" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                    </ion-item>
+                    <ion-item class="item-mdother">
+                      <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+                      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt3" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                      <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                    </ion-item>
+                    <ion-item class="item-mdother">
+                      <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+                      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                      <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q4" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                    </ion-item>
+                    <ion-item class="item-mdother">
+                        <ion-label color='dark'  style="font-size:78%;"><b>Point 4</b></ion-label>
+                        <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                        <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q5" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                      </ion-item>
+                      <ion-item class="item-mdother">
+                          <ion-label color='dark'  style="font-size:78%;"><b>Point 5</b></ion-label>
+                          <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt6" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                          <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q6" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                        </ion-item>
+                        <ion-item class="item-mdother">
+                            <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+                            <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt7" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                            <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q7" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                          </ion-item>
+                </div>
+                <div *ngIf="temp==='8'">
+                    <ion-item class="item-mdother">
+                        <ion-label color='dark' style="font-size:78%;"><b>Source</b></ion-label>
+                        <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt1" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled ></ion-input>
+                        <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q1" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                      </ion-item>
+                      <ion-item class="item-mdother">
+                        <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+                        <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt2" [ngModelOptions]="{standalone: true}" no-margin no-padding  disabled></ion-input>
+                        <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q2" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                      </ion-item>
+                      <ion-item class="item-mdother">
+                        <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+                        <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt3" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                        <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                      </ion-item>
+                      <ion-item class="item-mdother">
+                        <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+                        <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                        <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q4" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                      </ion-item>
+                      <ion-item class="item-mdother">
+                          <ion-label color='dark'  style="font-size:78%;"><b>Point 4</b></ion-label>
+                          <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                          <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q5" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                        </ion-item>
+                        <ion-item class="item-mdother">
+                            <ion-label color='dark'  style="font-size:78%;"><b>Point 5</b></ion-label>
+                            <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt6" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                            <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q6" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                          </ion-item>
+                          <ion-item class="item-mdother">
+                              <ion-label color='dark'  style="font-size:78%;"><b>Point 6</b></ion-label>
+                              <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt7" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                              <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q7" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                            </ion-item>
+                            <ion-item class="item-mdother">
+                                <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+                                <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt8" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                                <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q8" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                              </ion-item>
+                  </div>
+                  <div *ngIf="temp==='9'">
+                      <ion-item class="item-mdother">
+                          <ion-label color='dark' style="font-size:78%;"><b>Source</b></ion-label>
+                          <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt1" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled ></ion-input>
+                          <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q1" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                        </ion-item>
+                        <ion-item class="item-mdother">
+                          <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+                          <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt2" [ngModelOptions]="{standalone: true}" no-margin no-padding  disabled></ion-input>
+                          <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q2" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                        </ion-item>
+                        <ion-item class="item-mdother">
+                          <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+                          <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt3" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                          <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                        </ion-item>
+                        <ion-item class="item-mdother">
+                          <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+                          <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                          <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q4" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                        </ion-item>
+                        <ion-item class="item-mdother">
+                            <ion-label color='dark'  style="font-size:78%;"><b>Point 4</b></ion-label>
+                            <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                            <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q5" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                          </ion-item>
+                          <ion-item class="item-mdother">
+                              <ion-label color='dark'  style="font-size:78%;"><b>Point 5</b></ion-label>
+                              <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt6" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                              <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q6" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                            </ion-item>
+                            <ion-item class="item-mdother">
+                                <ion-label color='dark'  style="font-size:78%;"><b>Point 6</b></ion-label>
+                                <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt7" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                                <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q7" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                              </ion-item>
+                              <ion-item class="item-mdother">
+                                  <ion-label color='dark'  style="font-size:78%;"><b>Point 7</b></ion-label>
+                                  <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt8" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                                  <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q8" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                                </ion-item>
+                                <ion-item class="item-mdother">
+                                    <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+                                    <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt9" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                                    <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q9" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                                  </ion-item>
+                    </div>
+                    <div *ngIf="temp==='10'">
+                        <ion-item class="item-mdother">
+                            <ion-label color='dark' style="font-size:78%;"><b>Source</b></ion-label>
+                            <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt1" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled ></ion-input>
+                            <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q1" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                          </ion-item>
+                          <ion-item class="item-mdother">
+                            <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+                            <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt2" [ngModelOptions]="{standalone: true}" no-margin no-padding  disabled></ion-input>
+                            <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q2" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                          </ion-item>
+                          <ion-item class="item-mdother">
+                            <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+                            <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt3" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                            <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                          </ion-item>
+                          <ion-item class="item-mdother">
+                            <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+                            <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                            <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q4" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                          </ion-item>
+                          <ion-item class="item-mdother">
+                              <ion-label color='dark'  style="font-size:78%;"><b>Point 4</b></ion-label>
+                              <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                              <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q5" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                            </ion-item>
+                            <ion-item class="item-mdother">
+                                <ion-label color='dark'  style="font-size:78%;"><b>Point 5</b></ion-label>
+                                <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt6" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                                <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q6" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                              </ion-item>
+                              <ion-item class="item-mdother">
+                                  <ion-label color='dark'  style="font-size:78%;"><b>Point 6</b></ion-label>
+                                  <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt7" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                                  <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q7" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                                </ion-item>
+                                <ion-item class="item-mdother">
+                                    <ion-label color='dark'  style="font-size:78%;"><b>Point 7</b></ion-label>
+                                    <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt8" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                                    <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q8" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                                  </ion-item>
+                                  <ion-item class="item-mdother">
+                                      <ion-label color='dark'  style="font-size:78%;"><b>Point 8</b></ion-label>
+                                      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt9" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                                      <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q9" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                                    </ion-item>
+                                    <ion-item class="item-mdother">
+                                        <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+                                        <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt10" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+                                        <ion-input class="text-input text-input-md" style="font-size:66%;"  [(ngModel)]="data.q10" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled ></ion-input>
+                                      </ion-item>
+                      </div>
+    <!-- <ion-item class="item-mdother">
+      <ion-label color='dark' style="font-size:78%;"><b>Source</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt1" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled ></ion-input>
+    </ion-item>
+    <ion-item class="item-mdother">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt2" [ngModelOptions]="{standalone: true}" no-margin no-padding  disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdother">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.pt3" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdother">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.pt4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item> -->
+    <br>
+    <ion-item class="item-mdnew">
+    <ion-label color='dark'><b>Status</b></ion-label>
+  </ion-item>
+  <div *ngIf="temp==='2'">
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Source</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st1" [ngModelOptions]="{standalone: true}"   no-margin no-padding disabled> </ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.st2" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+  </div>
+  <div *ngIf="temp==='3'">
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Source</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st1" [ngModelOptions]="{standalone: true}"   no-margin no-padding disabled> </ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.st2" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled></ion-input>
+    </ion-item>
+  </div>
+  <div *ngIf="temp==='4'">
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Source</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st1" [ngModelOptions]="{standalone: true}"   no-margin no-padding disabled> </ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st2" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+  </div>
+  <div *ngIf="temp==='5'">
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Source</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st1" [ngModelOptions]="{standalone: true}"   no-margin no-padding disabled> </ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.st2" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+  </div>
+
+  <div *ngIf="temp==='6'">
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Source</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st1" [ngModelOptions]="{standalone: true}"   no-margin no-padding disabled> </ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.st2" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 4</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st6" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+  </div>
+  <div *ngIf="temp==='7'">
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Source</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st1" [ngModelOptions]="{standalone: true}"   no-margin no-padding disabled> </ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.st2" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 4</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 5</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st6" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st7" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+  </div>
+  <div *ngIf="temp==='8'">
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Source</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st1" [ngModelOptions]="{standalone: true}"   no-margin no-padding disabled> </ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.st2" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 4</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 5</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st6" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 6</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st7" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st8" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    
+    
+  </div>
+  <div *ngIf="temp==='9'">
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Source</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st1" [ngModelOptions]="{standalone: true}"   no-margin no-padding disabled> </ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.st2" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 4</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 5</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st6" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 6</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st7" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 7</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st8" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 8</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st9" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st9" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+  </div>
+  <div *ngIf="temp==='10'">
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Source</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st1" [ngModelOptions]="{standalone: true}"   no-margin no-padding disabled> </ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+      <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.st2" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 4</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st5" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 5</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st6" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 6</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st7" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 7</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st8" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Point 8</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st9" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+    <ion-item class="item-mdnew">
+      <ion-label color='dark'  style="font-size:78%;"><b>Destination</b></ion-label>
+      <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st10" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+    </ion-item>
+ 
+  </div>
+  <!-- <ion-item class="item-mdnew">
+    <ion-label color='dark'  style="font-size:78%;"><b>Point 1</b></ion-label>
+    <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;" [(ngModel)]="data.st1" [ngModelOptions]="{standalone: true}"   no-margin no-padding disabled> </ion-input>
+  </ion-item>
+  <ion-item class="item-mdnew">
+    <ion-label color='dark'  style="font-size:78%;"><b>Point 2</b></ion-label>
+    <ion-input  class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"   [(ngModel)]="data.st2" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+  </ion-item>
+  <ion-item class="item-mdnew">
+    <ion-label color='dark'  style="font-size:78%;"><b>Point 3</b></ion-label>
+    <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st3" [ngModelOptions]="{standalone: true}"  no-margin no-padding disabled></ion-input>
+  </ion-item>
+  <ion-item class="item-mdnew">
+    <ion-label color='dark'  style="font-size:78%;"><b>Point 4</b></ion-label>
+    <ion-input class="text-input input input-md ng-untouched ng-pristine" style="font-size:66%; margin-left: -223px;"  [(ngModel)]="data.st4" [ngModelOptions]="{standalone: true}" no-margin no-padding disabled></ion-input>
+  </ion-item> -->
+  <ion-fab bottom right>
+  <button ion-button round type="submit" (click)="closetrip()" style="text-transform: none;">Close Trip</button>
+</ion-fab>
+
+  <!-- </ion-refresher> -->
+
+  <!-- <div #map id="map"></div> -->
+</ion-content>
